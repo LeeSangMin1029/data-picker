@@ -1,7 +1,13 @@
 /* @refresh reload */
 import { render } from "solid-js/web";
-
-import "./index.css";
+import { WrapperThemeProvider } from "./themes";
 import App from "./App";
 
-render(() => <App />, document.getElementById("root"));
+render(
+  () => (
+    <WrapperThemeProvider>
+      <App />
+    </WrapperThemeProvider>
+  ),
+  document.getElementById("root")
+);
