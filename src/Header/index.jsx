@@ -4,6 +4,7 @@ import DataPicker from "../DataPicker";
 
 const StyledHeader = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 
 function Header() {
