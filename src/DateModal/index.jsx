@@ -28,13 +28,14 @@ const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 15px;
-  margin-right: 15px;
   height: 40px;
   color: black;
 `;
 
-const StyledButton = styled.i``;
+const StyledButton = styled.i`
+  padding: 10px;
+  cursor: pointer;
+`;
 
 // const StyledContainer = styled.div``;
 
