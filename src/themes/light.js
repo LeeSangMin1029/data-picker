@@ -1,6 +1,7 @@
 const theme = {
   mode: "light",
-  color: "white",
+  backgroundColor: "white",
+  fontColor: "#1e1f21",
 };
 
 export default theme;

@@ -21,7 +21,7 @@ const Contents = styled.div`
 
   width: 600px;
   height: 600px;
-  background-color: white;
+  background-color: ${(props) => props.theme().backgroundColor};
   border-radius: 10px;
   transform: translateX(-50%) translateY(-50%);
 `;

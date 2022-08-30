@@ -11,6 +11,7 @@ const StyledDiv = styled.div`
   user-select: none;
   padding: 10px;
   cursor: pointer;
+  color: ${(props) => props.theme().fontColor};
 `;
 
 const [view, setView] = createSignal(false);

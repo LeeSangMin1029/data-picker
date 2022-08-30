@@ -1,6 +1,7 @@
 const theme = {
   mode: "dark",
-  color: "#1e1f21",
+  backgroundColor: "#1e1f21",
+  fontColor: "white",
 };
 
 export default theme;

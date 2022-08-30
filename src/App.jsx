@@ -11,12 +11,13 @@ const GlobalStyles = () => {
   body{
     width: 100%;
     height: 100%;
-    background: ${(props) => props.theme().color};
+    background: ${(props) => props.theme().backgroundColor};
     transition: 200ms ease-in-out;
   }
   * {
     margin: 0px;
     padding: 0px;
+    transition: 200ms ease-in-out;
   }
   ul, ol {
     list-style: none;
