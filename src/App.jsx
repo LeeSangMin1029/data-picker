@@ -9,6 +9,8 @@ import { createGlobalStyles } from "solid-styled-components";
 const GlobalStyles = () => {
   const Styles = createGlobalStyles`
   body{
+    width: 100%;
+    height: 100%;
     background: ${(props) => props.theme().color};
     transition: 200ms ease-in-out;
   }
