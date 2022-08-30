@@ -1,8 +1,9 @@
-import { createSignal, Show } from "solid-js";
+import { createSignal, Show, createMemo } from "solid-js";
+import { createStore } from "solid-js/store";
 import { Portal } from "solid-js/web";
 import { styled } from "solid-styled-components";
-import { getCurrentDate } from "../utils";
 import DateModal from "../DateModal";
+import { getCurrentDate, addZ } from "../utils";
 
 const StyledDiv = styled.div`
   align-self: center;
@@ -14,18 +15,31 @@ const StyledDiv = styled.div`
   color: ${(props) => props.theme().fontColor};
 `;
 
-const [view, setView] = createSignal(false);
-const onClickEvent = () => {
-  setView(true);
-};
-
 const DataPicker = () => {
+  let getFullDate;
+  const generateDate = () => {
+    let [year, month, day] = [...getCurrentDate()];
+    return {
+      year: parseInt(year),
+      month: parseInt(month),
+      day: parseInt(day),
+      get getFullDate() {
+        return getFullDate();
+      },
+    };
+  };
+  const [view, setView] = createSignal(false);
+  const [date, setDate] = createStore(generateDate());
+  getFullDate = createMemo(
+    () => `${date.year}/${addZ(date.month)}/${addZ(date.day)}`
+  );
+
   return (
     <>
-      <StyledDiv onClick={onClickEvent}>{getCurrentDate()}</StyledDiv>
+      <StyledDiv onClick={() => setView(true)}>{date["getFullDate"]}</StyledDiv>
       <Show when={view()} fallback={<></>}>
         <Portal>
-          <DateModal setView={setView} />
+          <DateModal setView={setView} date={date} setDate={setDate} />
         </Portal>
       </Show>
     </>

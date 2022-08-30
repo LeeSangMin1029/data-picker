@@ -1,5 +1,6 @@
+import { batch } from "solid-js";
 import { styled } from "solid-styled-components";
-import { clickOutside } from "../utils";
+import { clickOutside } from "../utils"; // 사용 중인 코드
 
 const Modal = styled.div`
   display: block;
@@ -9,7 +10,7 @@ const Modal = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
-  & div {
+  & > div {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -25,14 +26,41 @@ const Modal = styled.div`
 
 const StyledHeader = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  position: relative;
+  align-items: center;
+  margin-left: 15px;
+  margin-right: 15px;
+  height: 40px;
+  color: black;
 `;
+
+const StyledButton = styled.i``;
 
 // const StyledContainer = styled.div``;
 
-const DateModal = ({ setView }) => {
+const DateModal = ({ setView, date, setDate }) => {
+  const onLeftClick = (e) => {
+    batch(() => {
+      if (date.month <= 1) {
+        setDate("month", () => 12);
+        setDate("year", (d) => d - 1);
+      } else {
+        setDate("month", (d) => d - 1);
+        setDate("day", (d) => 1);
+      }
+    });
+  };
+  const onRightClick = (e) => {
+    batch(() => {
+      if (date.month >= 12) {
+        setDate("month", () => 1);
+        setDate("year", (d) => d + 1);
+      } else {
+        setDate("month", (d) => d + 1);
+        setDate("day", (d) => 1);
+      }
+    });
+  };
   return (
     <>
       <Modal>
@@ -41,7 +69,17 @@ const DateModal = ({ setView }) => {
             setView(false);
           }}
         >
-          <StyledHeader></StyledHeader>
+          <StyledHeader>
+            <StyledButton
+              class="fa-solid fa-angle-left"
+              onClick={onLeftClick}
+            ></StyledButton>
+            {date["getFullDate"]}
+            <StyledButton
+              class="fa-solid fa-angle-right"
+              onClick={onRightClick}
+            ></StyledButton>
+          </StyledHeader>
         </div>
       </Modal>
     </>
