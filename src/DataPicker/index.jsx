@@ -1,7 +1,7 @@
 import { createSignal, Show } from "solid-js";
 import { Portal } from "solid-js/web";
 import { styled } from "solid-styled-components";
-import { getCurrentDate } from "./date";
+import { getCurrentDate } from "../utils";
 import DateModal from "../DateModal";
 
 const StyledDiv = styled.div`
@@ -22,7 +22,7 @@ const onClickEvent = () => {
 const DataPicker = () => {
   return (
     <>
-      <StyledDiv onClick={[onClickEvent]}>{getCurrentDate()}</StyledDiv>
+      <StyledDiv onClick={onClickEvent}>{getCurrentDate()}</StyledDiv>
       <Show when={view()} fallback={<></>}>
         <Portal>
           <DateModal setView={setView} />
