@@ -14,6 +14,16 @@ const getCurrentDate = () => {
   currentDate.setHours(currentDate.getHours() + 9);
   return currentDate.toISOString().split("T")[0].split("-");
 };
+
 const addZ = (n) => (n < 10 ? "0" + n : "" + n);
 
-export { getCurrentDate, clickOutside, addZ };
+const numberList = (count) => Array.from(Array(count), (_, i) => i + 1);
+
+// 달에 마지막 날을 구하는 함수
+const getLastDayOfMonth = (year, month) => new Date(year, month, 0).getDate();
+
+// 달의 일수를 배열로 만들어서 가져오는 함수
+const getDayListOfMonth = (year, month) =>
+  numberList(getLastDayOfMonth(year, month));
+
+export { getCurrentDate, clickOutside, numberList, getDayListOfMonth, addZ };
