@@ -1,7 +1,7 @@
 /* @refresh reload */
 import { render } from "solid-js/web";
-import { WrapperThemeProvider } from "./themes";
-import App from "./App";
+import { WrapperThemeProvider } from "./Components/ThemeProvider";
+import App from "./Components/App";
 
 render(
   () => (

@@ -1,5 +1,5 @@
 import { styled } from "solid-styled-components";
-import { useTheme } from "../themes";
+import { useTheme } from "./ThemeProvider";
 
 const Switch = styled.label`
   position: relative;

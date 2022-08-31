@@ -1,6 +1,7 @@
 import { batch } from "solid-js";
 import { styled } from "solid-styled-components";
 import { clickOutside } from "../utils"; // 사용 중인 코드
+// import ModalContainer from "./ModalContainer";
 
 const Modal = styled.div`
   display: block;
@@ -36,6 +37,8 @@ const StyledButton = styled.i`
   padding: 10px;
   cursor: pointer;
 `;
+
+const StyledDate = styled.div``;
 
 // const StyledContainer = styled.div``;
 
@@ -75,12 +78,13 @@ const DateModal = ({ setView, date, setDate }) => {
               class="fa-solid fa-angle-left"
               onClick={onLeftClick}
             ></StyledButton>
-            {date["getFullDate"]}
+            <StyledDate>{date["getFullDate"]}</StyledDate>
             <StyledButton
               class="fa-solid fa-angle-right"
               onClick={onRightClick}
             ></StyledButton>
           </StyledHeader>
+          {/* <ModalContainer date={date} /> */}
         </div>
       </Modal>
     </>

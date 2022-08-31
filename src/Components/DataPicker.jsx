@@ -2,7 +2,7 @@ import { createSignal, Show, createMemo } from "solid-js";
 import { createStore } from "solid-js/store";
 import { Portal } from "solid-js/web";
 import { styled } from "solid-styled-components";
-import DateModal from "../DateModal";
+import DateModal from "./DateModal";
 import { getCurrentDate, addZ } from "../utils";
 
 const StyledDiv = styled.div`
@@ -30,10 +30,12 @@ const DataPicker = () => {
   };
   const [view, setView] = createSignal(false);
   const [date, setDate] = createStore(generateDate());
+  const currentDate = () => date;
   getFullDate = createMemo(
     () => `${date.year}/${addZ(date.month)}/${addZ(date.day)}`
   );
 
+  console.log(date);
   return (
     <>
       <StyledDiv onClick={() => setView(true)}>{date["getFullDate"]}</StyledDiv>

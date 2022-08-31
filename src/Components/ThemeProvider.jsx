@@ -1,7 +1,7 @@
 import { ThemeProvider } from "solid-styled-components";
 import { createSignal, useContext, createContext } from "solid-js";
-import DarkTheme from "./dark";
-import LightTheme from "./light";
+import DarkTheme from "../themes/dark";
+import LightTheme from "../themes/light";
 
 export const ThemeContext = createContext([LightTheme, {}]);
 

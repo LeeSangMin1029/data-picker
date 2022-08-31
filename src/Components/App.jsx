@@ -18,6 +18,7 @@ const GlobalStyles = () => {
     margin: 0px;
     padding: 0px;
     transition: 200ms ease-in-out;
+    user-select: none;
   }
   ul, ol {
     list-style: none;
